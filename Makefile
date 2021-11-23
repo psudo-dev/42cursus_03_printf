@@ -14,12 +14,14 @@ NAME :=				libftprintf.a
 PRINTF :=			ft_printf
 LIBFT :=			libft
 
+BIN_DIR :=			bin
 LIB_DIR :=			lib
 SRC_DIR :=			src
 OBJ_DIR :=			build
 INC_DIR :=			inc
 TEST_DIR :=			test
-ALL_DIR :=			${LIB_DIR} \
+ALL_DIR :=			${BIN_DIR} \
+					${LIB_DIR} \
 					${SRC_DIR} \
 					${OBJ_DIR} \
 					${INC_DIR}
@@ -39,6 +41,7 @@ SRC :=				${addprefix ${SRC_DIR}/,${SRC_FILES}}
 OBJ :=				${addprefix ${OBJ_DIR}/,${SRC_FILES:.c=.o}}
 
 PRINTF_H :=			${INC_DIR}/${PRINTF}.h
+LIBFTPRINTF_A :=	${BIN_DIR}/${NAME}
 
 LIBFT_DIR :=		${LIB_DIR}/${LIBFT}
 LIBFT_SRC :=		${LIBFT_DIR}/${SRC_DIR}
@@ -59,13 +62,16 @@ RM_FILE :=			@rm -f
 RM_FOLDER :=		@rm -rf
 
 # < RECIPES
-${NAME}: ${ALL_DIR} ${LIBFT_A} ${OBJ}
+${NAME}: ${LIBFTPRINTF_A}
+
+${LIBFTPRINTF_A}: ${ALL_DIR} ${LIBFT_A} ${OBJ}
 	${MSG_COMPILING}
-	${AR} ${NAME} ${OBJ}
+	${AR} ${LIBFTPRINTF_A} ${OBJ}
 	${DONE}
 	${MSG_INDEX_LIB}
-	${RANLIB} ${NAME}
+	${RANLIB} ${LIBFTPRINTF_A}
 	${DONE}
+	@cp -f ${LIBFTPRINTF_A} .
 	${MSG_FINISHED}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c ${PRINTF_H}
@@ -76,7 +82,7 @@ ${LIBFT_A}: ${LIBFT_H} ${LIBFT_FILES}
 	${MAKE} -C ${LIBFT_DIR}
 	${MSG_BUILD_LIB}
 	${MSG_COPY_LIB}
-	@cp ${LIBFT_A} ${NAME}
+	@cp ${LIBFT_A} ${LIBFTPRINTF_A}
 	${DONE}
 
 ${ALL_DIR}:
@@ -95,8 +101,6 @@ clean: clean_libft clean_build
 fclean: fclean_libft clean_build clean_program
 	${MSG_RM_EMPTY_DIR}
 	${RM_FILE} ${INC_DIR}/${LIBFT}.h
-	${RM_FOLDER} ${LIBFT_DIR}/${BIN_DIR} ${LIBFT_DIR}/${OBJ_DIR}
-	${RM_FOLDER} ${OBJ_DIR}
 	${DONE}
 
 re: msg_rebuilding fclean all
@@ -109,7 +113,7 @@ clean_build: msg_cleaning
 	${DONE}
 
 clean_program: msg_fcleaning
-	${RM_FILE} ${NAME}
+	${RM_FILE} ${LIBFTPRINTF_A} ${NAME}
 	${DONE}
 
 clean_libft:
