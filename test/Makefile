@@ -6,39 +6,40 @@
 #    By: rsetoue <rsetoue@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/05 16:36:06 by rsetoue           #+#    #+#              #
-#    Updated: 2021/11/20 16:05:01 by rsetoue          ###   ########.fr        #
+#    Updated: 2021/11/26 13:06:43 by rsetoue          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# < Files
 NAME =				libftprintf.a
 PRINTF_H =			ft_printf.h
 LIBFT_H =			libft.h
+SRC =				*.c
+OBJ =				*.o
+
+# > Commands
 MAKE :=				@make
 CC :=				@clang
 CFLAGS :=			-Wall -Wextra -Werror
 AR :=				@ar -rcs
 RANLIB :=			@ranlib
-RM :=				@rm -f
-ROOT =				.
-SRC =				*.c
-OBJ =				*.o
+RM_FILE :=			@rm -f
+RM_FOLDER :=		@rm -rf
 
-${NAME}:
-	${MSG} ${FG_LAV} "Building Tests" ${RESET}
-	${MSG} ${FG_GREY} "Copying ${PRINTF_H}" ${RESET} ${NO_NL}
-	@cp ../inc/${PRINTF_H} ${ROOT}
-	${DONE}
-	${MSG} ${FG_GREY} "Copying ${LIBFT_H}" ${RESET} ${NO_NL}
-	@cp ../lib/libft/inc/${LIBFT_H} ${ROOT}
-	${DONE}
+# ? Directories
+TEST_DIR :=			.
+ROOT_DIR =			..
+INC =				inc
+
+${NAME}: ${INC}
 	${MSG} ${FG_GREY} "Copying ft_printf files" ${RESET} ${NO_NL}
-	@cp ../src/${SRC} ${ROOT}
+	@cp ../src/${SRC} ${TEST_DIR}
 	${DONE}
 	${MSG} ${FG_GREY} "Copying libft files" ${RESET} ${NO_NL}
-	@cp ../lib/libft/src/${SRC} ${ROOT}
+	@cp ../lib/libft/src/${SRC} ${TEST_DIR}
 	${DONE}
 	${MSG} ${FG_YELLOW} "Compiling files" ${RESET} ${NO_NL}
-	${CC} ${CFLAGS} -c -I${ROOT} ${SRC}
+	${CC} ${CFLAGS} -c -I${INC} ${SRC}
 	${DONE}
 	${MSG} ${FG_YELLOW} "Building Static Library" ${RESET} ${NO_NL}
 	${AR} ${NAME} ${OBJ}
@@ -46,28 +47,36 @@ ${NAME}:
 	${MSG} ${FG_GREY} "Indexing Library" ${RESET} ${NO_NL}
 	${RANLIB} ${NAME}
 	${DONE}
-	${MSG} ${FG_BLUE} "Removing source files" ${RESET} ${NO_NL}
-	${RM} ${SRC}
-	${DONE}
-	${MSG} ${FG_BLUE} "Removing object files" ${RESET} ${NO_NL}
-	${RM} ${OBJ}
-	${DONE}
 	${MSG} ${FG_GREEN} "Finished!" ${RESET}
+
+${INC}: ../inc/${PRINTF_H} ../lib/libft/inc/${LIBFT_H}
+	@mkdir -p ${INC}
+	${MSG} ${FG_LAV} "Building Tests" ${RESET}
+	${MSG} ${FG_GREY} "Copying ${PRINTF_H}" ${RESET} ${NO_NL}
+	@cp ../inc/${PRINTF_H} ${INC}
+	${DONE}
+	${MSG} ${FG_GREY} "Copying ${LIBFT_H}" ${RESET} ${NO_NL}
+	@cp ../lib/libft/inc/${LIBFT_H} ${INC}
+	${DONE}
 
 all: ${NAME}
 
 bonus: all
 
 clean:
-	${MSG} ${FG_BLUE} "Source files and Object files removed" ${RESET} \
-	${FG_GREEN} "✔" ${RESET}
+	${MSG} ${FG_BLUE} "Removing object files" ${RESET} ${NO_NL}
+	${RM_FILE} ${OBJ}
+	${DONE}
 
 fclean: clean
 	${MSG} ${FG_BLUE} "Removing header files" ${RESET} ${NO_NL}
-	${RM} *.h
+	${RM_FOLDER} ${INC}
+	${DONE}
+	${MSG} ${FG_BLUE} "Removing source files" ${RESET} ${NO_NL}
+	${RM_FILE} ${SRC}
 	${DONE}
 	${MSG} ${FG_BLUE} "Removing ${NAME}" ${RESET} ${NO_NL}
-	${RM} libftprintf.a
+	${RM_FILE} libftprintf.a
 	${DONE}
 
 re: rebuilding_msg fclean all
