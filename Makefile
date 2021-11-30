@@ -27,7 +27,7 @@ ALL_DIR :=			${BIN_DIR} \
 					${INC_DIR}
 
 SRC_FILES :=		flags.c \
-					identifiers.c \
+					specifiers.c \
 					precision.c \
 					printers.c \
 					structs.c \
@@ -62,16 +62,14 @@ RM_FILE :=			@rm -f
 RM_FOLDER :=		@rm -rf
 
 # < RECIPES
-${NAME}: ${LIBFTPRINTF_A}
-
-${LIBFTPRINTF_A}: ${ALL_DIR} ${LIBFT_A} ${OBJ}
+${NAME}: ${ALL_DIR} ${LIBFT_A} ${OBJ}
 	${MSG_COMPILING}
-	${AR} ${LIBFTPRINTF_A} ${OBJ}
+	${AR} ${NAME} ${OBJ}
 	${DONE}
 	${MSG_INDEX_LIB}
-	${RANLIB} ${LIBFTPRINTF_A}
+	${RANLIB} ${NAME}
 	${DONE}
-	@cp -f ${LIBFTPRINTF_A} .
+	@cp -f ${NAME} ${BIN_DIR}
 	${MSG_FINISHED}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c ${PRINTF_H}
@@ -82,7 +80,7 @@ ${LIBFT_A}: ${LIBFT_H} ${LIBFT_FILES}
 	${MAKE} -C ${LIBFT_DIR}
 	${MSG_BUILD_LIB}
 	${MSG_COPY_LIB}
-	@cp ${LIBFT_A} ${LIBFTPRINTF_A}
+	@cp ${LIBFT_A} ${NAME}
 	${DONE}
 
 ${ALL_DIR}:
@@ -148,6 +146,7 @@ ${TRIPOUILLE_DIR}:
 	${MSG_FINISHED}
 
 test: ${PSANTANA_DIR} ${TRIPOUILLE_DIR}
+	${MAKE} -C ${TEST_DIR}
 t: test
 
 mandatory_tests: test
