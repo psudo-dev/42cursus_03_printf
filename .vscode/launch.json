@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": true,
+      "cwd": "/Volumes/backup/Users/p.sudo/Documents/_42-cursus/github/1_level_one/03_printf",
+      "environment": [],
+      "program": "/Volumes/backup/Users/p.sudo/Documents/_42-cursus/github/1_level_one/03_printf/build/Debug/outDebug",
+      "internalConsoleOptions": "openOnSessionStart",
+      "MIMode": "lldb",
+      "externalConsole": true
+    }
+  ]
+}
