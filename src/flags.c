@@ -6,7 +6,7 @@
 /*   By: rsetoue <rsetoue@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:36:13 by rsetoue           #+#    #+#             */
-/*   Updated: 2021/11/10 20:42:22 by rsetoue          ###   ########.fr       */
+/*   Updated: 2021/11/30 12:50:12 by rsetoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
  * +description:
  * if there is precision ZERO padding is ignored
 **/
-void	ft_zero_check(t_id **id)
+void	t_zero_check(t_spec **spec)
 {
-	if (!(*id)->minus)
+	if (!(*spec)->minus)
 	{
-		if ((*id)->type == 's' || !(*id)->dot)
-			(*id)->zero = '0';
+		if ((*spec)->type == 's' || !(*spec)->dot)
+			(*spec)->zero = '0';
 	}
 }
 
@@ -29,23 +29,23 @@ void	ft_zero_check(t_id **id)
  * +description:
  * only works for hex
 **/
-void	ft_hash_check(t_id **id)
+void	ft_hash_check(t_spec **spec)
 {
-	if ((*id)->type == 'x')
-		(*id)->hash = ft_strdup("0x");
-	else if ((*id)->type == 'X')
-		(*id)->hash = ft_strdup("0X");
+	if ((*spec)->type == 'x')
+		(*spec)->hash = ft_strdup("0x");
+	else if ((*spec)->type == 'X')
+		(*spec)->hash = ft_strdup("0X");
 }
 
 /**
  * +description:
  * ZERO padding only works if there is no left justification (-)
 **/
-void	ft_minus_check(t_id **id)
+void	ft_minus_check(t_spec **spec)
 {
-	(*id)->minus = '-';
-	if ((*id)->zero)
-		(*id)->zero = '\0';
+	(*spec)->minus = '-';
+	if ((*spec)->zero)
+		(*spec)->zero = '\0';
 }
 
 /**
@@ -53,14 +53,14 @@ void	ft_minus_check(t_id **id)
  * only works for i and d
  * SPACE is ignored when + or -
 **/
-void	ft_plus_check(t_id **id)
+void	ft_plus_check(t_spec **spec)
 {
-	if ((*id)->type == 'd' || (*id)->type == 'i')
+	if ((*spec)->type == 'd' || (*spec)->type == 'i')
 	{
-		if ((*id)->sign != '-')
-			(*id)->sign = '+';
-		if ((*id)->space)
-			(*id)->space = '\0';
+		if ((*spec)->sign != '-')
+			(*spec)->sign = '+';
+		if ((*spec)->space)
+			(*spec)->space = '\0';
 	}
 }
 
@@ -69,11 +69,11 @@ void	ft_plus_check(t_id **id)
  * only works for i and d
  * SPACE only works if there is no + or -
 **/
-void	ft_space_check(t_id **id)
+void	ft_space_check(t_spec **spec)
 {
-	if (((*id)->type == 'd' || (*id)->type == 'i'))
+	if (((*spec)->type == 'd' || (*spec)->type == 'i'))
 	{
-		if (!(*id)->sign)
-			(*id)->space = ' ';
+		if (!(*spec)->sign)
+			(*spec)->space = ' ';
 	}
 }

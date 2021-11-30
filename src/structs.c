@@ -6,7 +6,7 @@
 /*   By: rsetoue <rsetoue@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:44:19 by rsetoue           #+#    #+#             */
-/*   Updated: 2021/11/10 21:14:15 by rsetoue          ###   ########.fr       */
+/*   Updated: 2021/11/30 12:50:11 by rsetoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,43 +59,43 @@ void	ft_clear_reset_data(t_data **data, int reset)
 	}
 }
 
-t_id	*ft_new_id(void)
+t_spec	*ft_new_spec(void)
 {
-	t_id	*id;
+	t_spec	*spec;
 
-	id = (t_id *)malloc(sizeof(t_id));
-	if (!id)
+	spec = (t_spec *)malloc(sizeof(t_spec));
+	if (!spec)
 		return (NULL);
-	id->type = '\0';
-	id->space = '\0';
-	id->zero = '\0';
-	id->minus = '\0';
-	id->sign = '\0';
-	id->dot = '\0';
-	id->width = 0;
-	id->precision = 0;
-	id->i = 0;
-	id->empty = 0;
-	id->hash = NULL;
-	return (id);
+	spec->type = '\0';
+	spec->space = '\0';
+	spec->zero = '\0';
+	spec->minus = '\0';
+	spec->sign = '\0';
+	spec->dot = '\0';
+	spec->width = 0;
+	spec->precision = 0;
+	spec->i = 0;
+	spec->empty = 0;
+	spec->hash = NULL;
+	return (spec);
 }
 
-void	ft_clear_reset_id(t_id **id, int reset)
+void	ft_clear_reset_spec(t_spec **spec, int reset)
 {
-	ft_free_null(&(*id)->hash);
-	(*id)->i = 0;
-	(*id)->type = '\0';
-	(*id)->space = '\0';
-	(*id)->zero = '\0';
-	(*id)->minus = '\0';
-	(*id)->sign = '\0';
-	(*id)->dot = '\0';
-	(*id)->width = 0;
-	(*id)->precision = 0;
-	(*id)->empty = 0;
-	if (!reset && (*id))
+	ft_free_null(&(*spec)->hash);
+	(*spec)->i = 0;
+	(*spec)->type = '\0';
+	(*spec)->space = '\0';
+	(*spec)->zero = '\0';
+	(*spec)->minus = '\0';
+	(*spec)->sign = '\0';
+	(*spec)->dot = '\0';
+	(*spec)->width = 0;
+	(*spec)->precision = 0;
+	(*spec)->empty = 0;
+	if (!reset && (*spec))
 	{
-		free(*id);
-		*id = NULL;
+		free(*spec);
+		*spec = NULL;
 	}
 }

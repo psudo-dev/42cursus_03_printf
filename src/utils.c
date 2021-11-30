@@ -6,7 +6,7 @@
 /*   By: rsetoue <rsetoue@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:02:42 by rsetoue           #+#    #+#             */
-/*   Updated: 2021/11/11 12:07:26 by rsetoue          ###   ########.fr       */
+/*   Updated: 2021/11/30 12:50:11 by rsetoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_str_to_int(char *str)
 	return (n);
 }
 
-int	ft_has_type(t_data **data, t_id **id)
+int	ft_has_type(t_data **data, t_spec **spec)
 {
 	int		i;
 	char	*type;
@@ -48,7 +48,7 @@ int	ft_has_type(t_data **data, t_id **id)
 		{
 			if (str[(*data)->type_index] == type[i])
 			{
-				(*id)->type = type[i];
+				(*spec)->type = type[i];
 				ft_free_null(&type);
 				return (1);
 			}
@@ -60,9 +60,9 @@ int	ft_has_type(t_data **data, t_id **id)
 	return (0);
 }
 
-void	ft_counter(t_data **data, t_id **id)
+void	ft_counter(t_data **data, t_spec **spec)
 {
-	(*data)->i += (*id)->i + 1;
+	(*data)->i += (*spec)->i + 1;
 	(*data)->total -= ((*data)->type_index + 2);
 	if ((*data)->blank_pad)
 		(*data)->total += (*data)->blank_pad;
@@ -82,18 +82,18 @@ void	ft_counter(t_data **data, t_id **id)
  * >if int
  * ?	len +1
 **/
-void	ft_prefix_handler(t_data **data, t_id **id)
+void	ft_prefix_handler(t_data **data, t_spec **spec)
 {
-	if ((*id)->hash)
+	if ((*spec)->hash)
 	{
 		if ((*data)->unsigned_int)
 			(*data)->parse_len += 2;
 		else
-			ft_free_null(&(*id)->hash);
+			ft_free_null(&(*spec)->hash);
 	}
-	else if ((*id)->type == 'p')
+	else if ((*spec)->type == 'p')
 		(*data)->parse_len += 2;
-	else if ((*id)->sign || (*id)->space)
+	else if ((*spec)->sign || (*spec)->space)
 		(*data)->parse_len += 1;
 }
 
@@ -105,13 +105,13 @@ void	ft_prefix_handler(t_data **data, t_id **id)
  * > counts printed characters
  * > free and null PARSE and HASH strings
 **/
-void	ft_parse_handler(t_data **data, t_id **id)
+void	ft_parse_handler(t_data **data, t_spec **spec)
 {
-	if ((*id)->dot)
-		ft_precision_handler(&(*data), &(*id));
-	ft_prefix_handler(&(*data), &(*id));
-	if ((*id)->width > (*data)->parse_len)
-		ft_width_handler(&(*data), &(*id));
-	ft_parse_print(&(*data), &(*id));
-	ft_counter(&(*data), &(*id));
+	if ((*spec)->dot)
+		ft_precision_handler(&(*data), &(*spec));
+	ft_prefix_handler(&(*data), &(*spec));
+	if ((*spec)->width > (*data)->parse_len)
+		ft_width_handler(&(*data), &(*spec));
+	ft_parse_print(&(*data), &(*spec));
+	ft_counter(&(*data), &(*spec));
 }
