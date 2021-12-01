@@ -26,7 +26,8 @@ ALL_DIR :=			${BIN_DIR} \
 					${OBJ_DIR} \
 					${INC_DIR}
 
-SRC_FILES :=		flags.c \
+SRC_FILES :=		ft_printf.c \
+					flags.c \
 					specifiers.c \
 					precision.c \
 					printers.c \

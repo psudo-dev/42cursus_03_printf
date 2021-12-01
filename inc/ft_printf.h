@@ -6,7 +6,7 @@
 /*   By: rsetoue <rsetoue@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 23:06:22 by rsetoue           #+#    #+#             */
-/*   Updated: 2021/11/30 12:49:03 by rsetoue          ###   ########.fr       */
+/*   Updated: 2021/12/01 01:05:29 by rsetoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ typedef struct s_spec
 	int				empty;
 }					t_spec;
 
-// < printers
 int		ft_printf(const char *string, ...);
+
+// < printers
 int		ft_printer(va_list ap, t_data **data, t_spec **spec);
 void	ft_parse_print(t_data **data, t_spec **spec);
 void	ft_print_n_chrs(int n, char c);
