@@ -1,6 +1,10 @@
-# 42 | São Paulo  <!-- omit in toc -->
+# ft_printf  <!-- omit in toc -->
 
-Projects and Exercises from the [École 42 | 42 School](https://github.com/42School):
+#### Bonus A  <!-- omit in toc -->
+
+ft_printf project for [42 | São Paulo](https://github.com/42sp)
+
+[École 42 | 42 School](https://github.com/42School):
 
 - ***[Level 01](https://github.com/psudo-dev/42cursus_index)***
   - ***03. Printf***
@@ -9,7 +13,7 @@ Projects and Exercises from the [École 42 | 42 School](https://github.com/42Sch
 
 - [Project](#project)
 - [Mandatory Part](#mandatory-part)
-- [Bonus Part <a name = "bonus_part"></a>](#bonus-part-)
+- [Bonus Part](#bonus-part)
 - [Usage](#usage)
 - [ft_printf](#ft_printf)
   - [Implementation](#implementation)
@@ -50,7 +54,7 @@ It's just the straight forward implementation of a few types:
 > - **`%X`** _print a number in hexadecimal (base 16), with uppercase_
 > - **`%%`** _print a percent sign_
 
-## Bonus Part <a name = "bonus_part"></a>
+## Bonus Part
 
 The Major challenge of the Bonus Part is to not only manipulate the arguments you are going to print but mainly to understand:
 
@@ -170,12 +174,12 @@ It's passing in all 2,385,584 tests of the following testers:
 > - **`make a`** *run `all` tests*
 > - **`make c`** *clean test object files*
 > - **`make f`** *clean **`*.c`**, **`*.o`** and **`*,h`** and `libftprintf.a`*
+> - **`make r`** *rebuild `test` files*
 > - **`make d`** *delete `test` files*
 
 ## Issues and Suggestions
 
--   Feel free to contact me or create an issue!
--   For more information, [click here](https://github.com/psudo-dev/42cursus_03_printf/issues/new/choose).
+-   Feel free to contact me or create an [issue](https://github.com/psudo-dev/42cursus_03_printf/issues/new/choose)!
 
 ## References and Links
 
