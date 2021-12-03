@@ -104,6 +104,15 @@ fclean: fclean_libft clean_build clean_program
 
 re: msg_rebuilding fclean all
 
+norm:
+	${MSG} ${FG_LAV} "running norminette" ${RESET}
+	@norminette -R CheckForbiddenSourceHeader
+	${MSG_FINISHED}
+	${MSG}
+	${MSG}
+	${MSG}
+	${MSG}
+
 retest: rebuild_test
 
 # : CLEANING
@@ -122,10 +131,6 @@ fclean_libft:
 	${MAKE} fclean -C ${LIBFT_DIR}
 
 # ? TEST
-
-# : creates Makefile and copy from Macro content
-# : sed eliminates leading/trailing whitespaces
-# : since newline let a leading space
 
 TRIPOUILLE_DIR :=	${TEST_DIR}/tripouille
 PSANTANA_DIR :=		${TEST_DIR}/psantana
