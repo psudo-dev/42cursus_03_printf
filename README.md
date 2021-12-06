@@ -1,10 +1,10 @@
 # ft_printf  <!-- omit in toc -->
 
-#### Bonus A  <!-- omit in toc -->
+#### 42 Cursus  <!-- omit in toc -->
 
 ft_printf project for [42 | São Paulo](https://github.com/42sp)
 
-[École 42 | 42 School](https://github.com/42School):
+[École 42/42 School](https://github.com/42School):
 
 - ***[Level 01](https://github.com/psudo-dev/42cursus_index)***
   - ***03. Printf***
@@ -33,7 +33,8 @@ This project consists in recreating the function **printf()** from the C Languag
 One of the main parts or maybe what's new with this project was to learn how to work with variadic functions.
 
 ```c
-#include <stdarg.h>
+#include <stdarg.h> // Variadic Functions
+#include <stdlib.h> // malloc(), free()
 ```
 
 For more information you check the README of [Julio Akira](https://github.dev/julioakira/42sp_ft_printf)'s project implementation, he explained it in more details.
@@ -93,10 +94,12 @@ git clone https://github.com/psudo-dev/42cursus_03_printf.git <DIR_NAME>
 #### Commands <!-- omit in toc -->
 >
 > - **`make`** *compiles `libftprintf.a` library*
-> - **`make clean`** *clean object files*
-> - **`make fclean`** *clean object files and `libftprintf.a`*
-> - **`make re`** *clean project files and recompiles*
-> - **`make exit`** *clean project files and delete test files*
+> - **`make clean`** *cleans object files*
+> - **`make fclean`** *cleans object files and `libftprintf.a`*
+> - **`make re`** *cleans project files and recompiles*
+> - **`make exit`** *cleans project files and delete test files*
+> - **`make norm <DIR>`** *runs norminette*
+>   - *<span style="font-size:0.8em; color:rgba(0, 0, 0, 0.75)">(default = root directory)</span>*
 
 ---
 
@@ -151,11 +154,11 @@ I invested some time learning more about the Makefile in order to understand it 
 
 For the bonus part, we had to implement **`width`**, **`precision`** and a few **`flags`**, which might sound simple but it changes everything.
 
-They say that in case you are going to do the **Bonus part**, you should approach the **Mandatory** part already thinking about the bonus. That would be great if you could build upon what you already did in the mandatory part, which is what we usually expect out of the Bonus Part, but that's not the case.
+They say that in case you are going to do the **Bonus part**, you should approach the **Mandatory** part already thinking about the bonus. That would be great if you could build upon what you already did in the mandatory part, which is what we usually expect out of the Bonus Part, but that wasn't not the case.
 
 In the end you basically have to redo the whole project, it would have been best to simply say to those that intend to make the bonus part to jump straight to the bonus or maybe they should have kept the **`width`** and the **`Bonus B`** flags in the **Mandatory** part and the **Bonus** would be the **`Bonus A`**.
 
-The fact that you have to handle a lot of different things interacting with different priorities and print things before, after and in the middle of what you've done in the mandatory part completely changes how you think this through compared to the Mandatory part.
+The fact that you have to handle a lot of different modifiers interacting with each other priorities and print a substring **before**, **after** and in the **middle** of what you've done in the mandatory part completely changes how you think this through compared to the Mandatory part.
 
 > It makes no sense to call it a bonus when it's basically double the work of the mandatory. A Bonus should be something like 20% extra work, not 200%.
 
@@ -168,14 +171,14 @@ It's passing in all 2,385,584 tests of the following testers:
 
 #### Commands <!-- omit in toc -->
 >
-> - **`make t`** *clone printf testers to `/test` directory*
-> - **`make m`** *run `mandatory` tests*
-> - **`make b`** *run `bonus` tests*
-> - **`make a`** *run `all` tests*
-> - **`make c`** *clean test object files*
-> - **`make f`** *clean **`*.c`**, **`*.o`** and **`*,h`** and `libftprintf.a`*
-> - **`make r`** *rebuild `test` files*
-> - **`make d`** *delete `test` files*
+> - **`make t`** *clones printf testers to `/test` directory*
+> - **`make m`** *runs `mandatory` tests*
+> - **`make b`** *runs `bonus` tests*
+> - **`make a`** *runs `all` tests*
+> - **`make c`** *cleans test object files*
+> - **`make f`** *cleans **`*.c`**, **`*.o`** and **`*.h`** and `libftprintf.a`*
+> - **`make r`** *rebuilds `test` files*
+> - **`make d`** *deletse `test` files*
 
 ## Issues and Suggestions
 
