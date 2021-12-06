@@ -111,7 +111,6 @@ norm:
 	${MSG}
 	${MSG}
 	${MSG}
-	${MSG}
 
 retest: rebuild_test
 
