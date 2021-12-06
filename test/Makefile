@@ -6,7 +6,7 @@
 #    By: rsetoue <rsetoue@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/05 16:36:06 by rsetoue           #+#    #+#              #
-#    Updated: 2021/11/26 13:06:43 by rsetoue          ###   ########.fr        #
+#    Updated: 2021/12/02 22:32:41 by rsetoue          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,15 @@ fclean: clean
 	${DONE}
 
 re: rebuilding_msg fclean all
+
+norm:
+	${MSG} ${FG_LAV} "running norminette" ${RESET}
+	@norminette -R CheckForbiddenSourceHeader
+	${MSG_FINISHED}
+	${MSG}
+	${MSG}
+	${MSG}
+	${MSG}
 
 rebuilding_msg:
 	${MSG} ${FG_LAV} "Rebuilding Tests" ${RESET}

@@ -6,7 +6,7 @@
 /*   By: rsetoue <rsetoue@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:20:29 by rsetoue           #+#    #+#             */
-/*   Updated: 2021/11/30 12:50:11 by rsetoue          ###   ########.fr       */
+/*   Updated: 2021/12/01 01:02:33 by rsetoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,5 @@ int	ft_printer(va_list ap, t_data **data, t_spec **spec)
 	total = (*data)->total + (*data)->i;
 	ft_clear_reset_spec(&(*spec), 0);
 	ft_clear_reset_data(&(*data), 0);
-	return (total);
-}
-
-int	ft_printf(const char *string, ...)
-{
-	va_list		ap;
-	t_data		*data;
-	t_spec		*spec;
-	int			total;
-
-	total = 0;
-	data = ft_new_data();
-	spec = ft_new_spec();
-	if (!string || !spec || !data)
-		return (0);
-	data->str = (char *) string;
-	va_start(ap, string);
-	total = ft_printer(ap, &data, &spec);
-	va_end(ap);
 	return (total);
 }
